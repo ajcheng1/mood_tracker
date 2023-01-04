@@ -23,26 +23,39 @@ import en_core_web_sm
 from datetime import datetime
 from LeXmo import LeXmo
 
+import pickle
 
 
 ''' possible help for transmitting code to docs https://www.projectpro.io/recipes/upload-files-to-google-drive-using-python#mcetoc_1g02b3q8jbh '''
 class Documentation:
-    def __init__(self, date, time, notes):
-        self.date = date
-        self.time = time
-        self.notes = notes
-        #self.journal = journal
+
     global journal
     journal = []  # list
+
+    def __init__(self, notes):
+        self.notes = notes
+        #self.journal = journal
     def time(self):
         now = datetime.datetime.now()
         print(now.year, now.month, now.day, now.hour, now.minute)
-    def document(self, date,time, notes):
-        journal.append((date, time, notes))
-        print(journal)
-    def allDocument(self, date, time, notes):
-        for i in range(len(journal)):
-            print(journal[i])
+
+    def document(self, notes):
+        file = open("C:\\Users\\Shado\\Desktop\\Jet Brains\\journal23test.txt", 'a')
+        file.writelines(notes)
+        file.close()
+    def read(self):
+       with open("C:\\Users\\Shado\\Desktop\\Jet Brains\\journal23test.txt", 'r') as file:
+           #print(file.readline(), end='' + " " + "\n")
+           print(file.readline())
+
+           '''lineCounter = len(file.readlines())
+           print('Total lines:', lineCounter)  #
+           for i in range(lineCounter):
+               print(str(i+1) + ": " + file.readline(), end='' + "\n")'''
+
+
+
+
 
 def name_of_user():
     name1 = input("What is your name? Please enter below: ")
@@ -51,8 +64,8 @@ def name_of_user():
 
 def mood_base_tracker(name1):
     nlp = en_core_web_sm.load()
-    Question1 = str(input("Hello " + name1 + ". How are you feeling today? Feel free to jot down some notes and observations today: "))
-    #Question1 = "meh today" # for testing
+    #Question1 = str(input("Hello " + name1 + ". How are you feeling today? Feel free to jot down some notes and observations today: "))
+    Question1 = "great" # for testing
 
     all_emotions_value = te.get_emotion(Question1)
 
@@ -129,24 +142,26 @@ def mood_base_tracker(name1):
     today = datetime.now()
     date1 = str(today.month) + "/" + str(today.day) + "/" + str(today.year)
     time1 = str(datetime.today().strftime("%H:%M %p"))
-    notes1 = str(all_emotions_value) + ", " + str(Question1)
+
+
+    notes1 = date1 + " " + time1 + " " + str(all_emotions_value) + ", " + str(Question1) + "\n"
 
     toLog = str(input("Do you want to log this journal entry today? "))
     toLog = toLog.lower()
-    currentDayHolder = Documentation(date1,time1,notes1)
+    currentDayHolder = Documentation(notes1)
     if toLog.__contains__("yes"):
-        currentDayHolder.document(date1,time1,notes1)
+        currentDayHolder.document(notes1)
     else:
         print("ok!")
 
-    allJournalEntries = str(input("Do you want to see your previous journal entries? "))
+    '''allJournalEntries = str(input("Do you want to see your previous journal entries? "))
     allJournalEntries = allJournalEntries.lower()
     if allJournalEntries.__contains__("yes"):
-        currentDayHolder.allDocument((date1,time1,notes1))
+        currentDayHolder.read()
     else:
-        print("Sounds Good. I hope you have a great day!")
+        print("Sounds Good. I hope you have a great day!")'''
 
-
+    print("Sounds Good. I hope you have a great day!")
 
 
 def anger(angry_value):
