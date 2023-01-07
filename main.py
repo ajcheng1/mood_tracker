@@ -1,18 +1,13 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 '''
 Date Created: 12/21/22
 Skills learned: importing pip files, basic python tools, new lines \n and \, classes, functions, lists, dictionary, boolean
-
 Natural Language Processing
-
-
+First commit file and then push. This will update code to python. From there, you can clone that file to your macbook
 
 
 some of the responses have been taken from chatGPT
 '''
+
 import text2emotion as te
 import nltk
 import random
