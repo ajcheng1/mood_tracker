@@ -23,14 +23,8 @@ import en_core_web_sm
 from datetime import datetime
 from LeXmo import LeXmo
 
-import pickle
 
-
-''' possible help for transmitting code to docs https://www.projectpro.io/recipes/upload-files-to-google-drive-using-python#mcetoc_1g02b3q8jbh '''
 class Documentation:
-
-    global journal
-    journal = []  # list
 
     def __init__(self, notes):
         self.notes = notes
@@ -40,11 +34,11 @@ class Documentation:
         print(now.year, now.month, now.day, now.hour, now.minute)
 
     def document(self, notes):
-        file = open("C:\\Users\\Shado\\Desktop\\Jet Brains\\journal23test.txt", 'a')
+        file = open("C:\\Users\\Shado\\Dropbox\\journal23test.txt", 'a')
         file.writelines(notes)
         file.close()
     def read(self):
-       with open("C:\\Users\\Shado\\Desktop\\Jet Brains\\journal23test.txt", 'r') as file:
+       with open("C:\\Users\\Shado\\Dropbox\\journal23test.txt", 'r') as file:
            #print(file.readline(), end='' + " " + "\n")
            print(file.readline())
 
@@ -64,8 +58,8 @@ def name_of_user():
 
 def mood_base_tracker(name1):
     nlp = en_core_web_sm.load()
-    #Question1 = str(input("Hello " + name1 + ". How are you feeling today? Feel free to jot down some notes and observations today: "))
-    Question1 = "great" # for testing
+    Question1 = str(input("Hello " + name1 + ". How are you feeling today? Feel free to jot down some notes and observations today: "))
+    #Question1 = "great" # for testing
 
     all_emotions_value = te.get_emotion(Question1)
 
