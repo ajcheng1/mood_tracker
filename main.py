@@ -10,14 +10,22 @@ some of the responses have been taken from chatGPT
 
 import text2emotion as te
 import nltk
+
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+nltk.download()
+#nltk.download()
 import random
 import math
-nltk.download('punkt')
 import spacy
 import en_core_web_sm
 from datetime import datetime
-from LeXmo import LeXmo
-
 
 class Documentation:
 
@@ -41,10 +49,6 @@ class Documentation:
            print('Total lines:', lineCounter)  #
            for i in range(lineCounter):
                print(str(i+1) + ": " + file.readline(), end='' + "\n")'''
-
-
-
-
 
 def name_of_user():
     name1 = input("What is your name? Please enter below: ")
@@ -214,8 +218,8 @@ def inspirational_quote():
         Dict = {1: 'Trust yourself that you can do it and get it.” ―Baz Luhrmann', 2: 'If people are doubting how far you can go, go so far that you can’t hear them anymore. —Michele Ruiz',\
          3: '“Impossible is just an opinion.” —Paulo Coelho', 4: 'View life as a story, not as a scoreboard - Alvin Cheng!', 5: 'Writing is Healing - Alvin Cheng', 6: 'Be kind, for everyone you meet is fighting a great battle', \
          7: 'External success will not bring inner peace', 8: 'One day, in retrospect, the years of struggle will strike you as the most beautiful. - Sigmund Freud', 9: 'In the end, life is about character - Alvin Cheng', 10: 'Be confident, not certain - Eleanor Roosevelt', \
-         10: 'if life were predictable it would cease to be life and be without flavor - Eleanor Roosevelt' }
-        print (Dict[random.randrange(1,10,1)])
+         10: 'if life were predictable it would cease to be life and be without flavor - Eleanor Roosevelt', 11: 'I am enough', 12: 'In the end, life is about character. Bring character to your job and just let all the cards drop in line' }
+        print (Dict[random.randrange(1,12,1)])
 
     elif askForQuote.__contains__("no") or askForQuote.__contains__("na"):
         #print("Alright. Have a good day!")
