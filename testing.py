@@ -1,8 +1,6 @@
 
 
 from datetime import datetime
-
-
 def datetester(name):
 
     today = datetime.now()

@@ -4,13 +4,11 @@ Skills learned: importing pip files, basic python tools, new lines \n and \, cla
 Natural Language Processing
 First commit file and then push. This will update code to python. From there, you can clone that file to your macbook
 Hit update to refresh file on other laptop after you have committed file and pushed it out
-
 some of the responses have been taken from chatGPT
 '''
 
 import text2emotion as te
 import nltk
-
 import ssl
 
 try:
@@ -158,7 +156,7 @@ def mood_base_tracker(name1):
 
 
 def anger(angry_value):
-    anger = int(input("From 1-10, how angry do you feel right now? (1 - at total peace and calm, 10 - total rage monster"))
+    anger = int(input("From 1-10, how angry do you feel right now? (1 - at total peace and calm, 10 - total rage monster): "))
     if anger > 6:
         print('''
         It's completely normal to feel angry sometimes. It's a natural emotion that can be triggered by a variety of situations. 
